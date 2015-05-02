@@ -1,21 +1,10 @@
-var Calc = (function(){
+(function(window){
 
     var actions = {
-        '+' : function (value) {
-            this.value = this.value + value;
-        },
-
-        '-' : function (value) {
-            this.value = this.value - value;
-        },
-
-        '*' : function (value) {
-            this.value = this.value * value;
-        },
-
-        '/' : function (value) {
-            this.value = this.value / value;
-        }
+        '+' : function (a, b) { return a + b },
+        '-' : function (a, b) { return a - b },
+        '*' : function (a, b) { return a * b },
+        '/' : function (a, b) { return a / b }
     };
 
     function Calc () {
@@ -34,7 +23,9 @@ var Calc = (function(){
         } else {
 
             if ( actions.hasOwnProperty(this.action) ) {
-                actions[this.action].call(this, value, action);
+                this.value = actions[this.action](this.value, value);
+            } else {
+                throw('unknown action "' + this.action + '"');
             }
 
             if ( action === '=' ) {
@@ -54,11 +45,11 @@ var Calc = (function(){
         return 0;
     };
 
-    return Calc;
-})();
+    window.Calc = Calc;
+})(window);
 
 
-var xCalc = (function(){
+(function(){
 
     function findCalcs () {
 
@@ -103,12 +94,5 @@ var xCalc = (function(){
         });
     }
 
-    return {
-        init : function () {
-            initCalcs( findCalcs() )
-        }
-    }
+    initCalcs( findCalcs() );
 })();
-
-xCalc.init();
-
