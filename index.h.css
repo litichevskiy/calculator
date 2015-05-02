@@ -1,0 +1,31 @@
+div[data-calc="cont"] {
+    display : block;
+    position:relative;
+    padding: 0.2em;
+    border: 1px solid;
+  }
+
+input[data-calc] {
+    font-size: 80px;
+    width : 100%;
+}
+
+ul[data-calc] {
+    display : block;
+    font-size: 80px;
+    padding: 0.2em;
+    border: 1px solid;
+  }
+
+ul[data-calc] li{
+    display: inline-block;
+    color:blue;
+    padding: 0.4em;
+    border: 1px solid grey;
+    margin: 3px;
+    
+  }
+ul[data-calc] li:hover{
+    background-color: lightgreen;
+    cursor: pointer;
+  }
