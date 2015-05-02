@@ -100,5 +100,5 @@
         });
     }
 
-    initCalcs( findCalcs() );/////////////////
+    initCalcs( findCalcs() );
 })();
