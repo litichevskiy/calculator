@@ -75,7 +75,13 @@
                     calcNode.input.value = '';
                 }
 
-                calcNode.input.value += event.target.getAttribute('data-calc-val');
+                var newNumber = event.target.getAttribute('data-calc-val'),
+                    oldNumber =calcNode.input.value,
+                    value = oldNumber + newNumber;
+
+                calcNode.input.value = isNaN(value)
+                    ? oldNumber
+                    : value;
             });
 
             calcNode.actions.addEventListener('click', function (event) {
